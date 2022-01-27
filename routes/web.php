@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\addDiscussionController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -34,3 +35,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/', [PostController::class, 'index'])->name('posts');
+
+Route::get('/add-discussion', [addDiscussionController::class, 'index'])->name('addDiscussion');
+Route::post('/add-discussion', [addDiscussionController::class, 'store']);
