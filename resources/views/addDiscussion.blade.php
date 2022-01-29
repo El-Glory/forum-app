@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="flex justify-center">
+    @if (session('success'))
+    <div class="bg-green-500 p-4 w-7/12 rounded-lg mb-6 text-black text-center opacity-70">
+        {{session('success')}}
+    </div>
+    @endif
+</div>
+<div class="flex justify-center">
+
     <div class="w-7/12 bg-white p-4 mt-4">
 
         <form action="" method="post">

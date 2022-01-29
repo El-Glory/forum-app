@@ -35,6 +35,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/', [PostController::class, 'index'])->name('posts');
+Route::post('/posts/{post}/likes', [PostController::class, 'postLike'])->name('posts.likes');
 
 Route::get('/add-discussion', [addDiscussionController::class, 'index'])->name('addDiscussion');
 Route::post('/add-discussion', [addDiscussionController::class, 'store']);
