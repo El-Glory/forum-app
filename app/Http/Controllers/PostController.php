@@ -14,7 +14,7 @@ class PostController extends Controller
     }
     public function index()
     {
-        $posts = Post::paginate();
+        $posts = Post::latest()->paginate();
         //Get all posts and return(view) the,
         return view('posts.index', [
             'posts' => $posts
@@ -30,5 +30,6 @@ class PostController extends Controller
 
             return back();
         }
+        return back();
     }
 }

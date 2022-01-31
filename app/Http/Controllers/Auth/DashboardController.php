@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,8 +14,12 @@ class DashboardController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index()
+    public function index(User $user, Post $post)
     {
-        return view('auth.dashboard');
+        $posts = auth()->user()->posts;
+        // $posts = Post::latest()->paginate();
+        return view('auth.dashboard', [
+            'posts' => $posts
+        ]);
     }
 }
