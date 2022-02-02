@@ -8,7 +8,7 @@
             @foreach($posts as $post)
             <div class="mb-4 p-4 bg-white shadow-lg">
                 <div class="mb-3">
-                    <a href="" class="font-medium mb-4">{{$post->title}}</a> <span class="text-gray-400 text-sm ml-6 italic">{{$post->user->name}}</span>
+                    <a href="{{route('posts.show', $post)}}" class="font-medium mb-4">{{$post->title}}</a>
                 </div>
 
                 <p class="font-light mb-3 text-gray-600">{{$post->body}}</p>
@@ -22,6 +22,11 @@
                     </form>
 
                     <a href="" class="ml-10"><i class="far fa-comment"></i></a>
+                    <form action="{{route('post.destroy', $post)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="ml-10"><i class="fas fa-dumpster"></i></button>
+                    </form>
                 </div>
 
 

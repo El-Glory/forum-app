@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,11 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/', [PostController::class, 'index'])->name('posts');
+Route::delete('/dashboard/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 Route::post('/posts/{post}/likes', [PostController::class, 'postLike'])->name('posts.likes');
+Route::get('/posts/{post:title}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/add-discussion', [addDiscussionController::class, 'index'])->name('addDiscussion');
 Route::post('/add-discussion', [addDiscussionController::class, 'store']);
+
+Route::post('{post:title}/comment/', [CommentController::class, 'store'])->name('comment.add');

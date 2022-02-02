@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth'])->except('index');
+        $this->middleware(['auth'])->except('index', 'show');
     }
     public function index()
     {
@@ -30,6 +30,20 @@ class PostController extends Controller
 
             return back();
         }
+        return back();
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
+        ]);
+    }
+
+    public function destroy(Post $post)
+    {
+
+        $post->delete();
         return back();
     }
 }
