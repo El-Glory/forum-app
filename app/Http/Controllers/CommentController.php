@@ -11,23 +11,25 @@ class CommentController extends Controller
 {
     public function store(Request $request, User $user, Post $post)
     {
+        //dd(auth()->user()->name);
+        if (!auth()->user()) {
+            $this->validate($request, [
+                'name' => 'max:255',
+            ]);
+        }
 
         $this->validate($request, [
-            'name' => 'required|max:255',
             'body' => 'required'
         ]);
 
 
         $comment = new Comment();
-        $comment->name = $request->name;
+        $comment->name = !auth()->user() ? $request->name : auth()->user()->name;
         $comment->body = $request->body;
         $comment->post_id = $post->id;
-        $comment->user_id = auth()->user();
-
-
-
+        $comment->user()->associate($request->user());
         $comment->save();
-        dd($comment);
+
 
         return back();
     }

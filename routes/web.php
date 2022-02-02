@@ -38,9 +38,8 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 Route::get('/', [PostController::class, 'index'])->name('posts');
 Route::delete('/dashboard/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 Route::post('/posts/{post}/likes', [PostController::class, 'postLike'])->name('posts.likes');
+Route::post('{post:title}/comment/', [CommentController::class, 'store'])->name('comment.add');
 Route::get('/posts/{post:title}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/add-discussion', [addDiscussionController::class, 'index'])->name('addDiscussion');
 Route::post('/add-discussion', [addDiscussionController::class, 'store']);
-
-Route::post('{post:title}/comment/', [CommentController::class, 'store'])->name('comment.add');
