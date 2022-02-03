@@ -22,6 +22,7 @@
                     </form>
 
                     <a href="" class="ml-10"><i class="far fa-comment"></i></a>
+                    <span class="text-sm text-gray-600 ml-1">{{$post->comments->count()}}</span>
                     <form action="{{route('post.destroy', $post)}}" method="post">
                         @csrf
                         @method('DELETE')

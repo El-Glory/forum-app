@@ -21,10 +21,25 @@
                 </form>
 
                 <a href="" class="ml-10"><i class="far fa-comment"></i></a>
+                <span class="text-sm text-gray-600 ml-1">{{$post->comments->count()}}</span>
             </div>
 
 
         </div>
+
+        @foreach($post->comments as $comment)
+        <div class=" mb-4 p-4 bg-white shadow-lg rounded-lg">
+            <div class="">
+                <div class="mb-1">
+                    <p href="{{route('posts.show', $post)}}" class="font-medium ">{{$comment->name}}</p>
+                </div>
+                <p class="ml-7 font-light">{{ $comment->body }}</p>
+            </div>
+
+        </div>
+        @endforeach
+
+
         <div class="mb-4 p-14 bg-white shadow-lg">
             <form action="{{route('comment.add', $post)}}" method="post">
                 @csrf

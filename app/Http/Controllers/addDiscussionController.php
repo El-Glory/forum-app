@@ -29,7 +29,7 @@ class addDiscussionController extends Controller
             'title' => $request->title,
             'body' => $request->body
         ]);
-
-        return back()->with('success', 'You have successfully started a discussion');
+        session()->flash('success', 'You have succesfully started a discussion');
+        return back();
     }
 }

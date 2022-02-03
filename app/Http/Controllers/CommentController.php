@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Notifications\NewComment;
 
 class CommentController extends Controller
 {
@@ -29,6 +30,8 @@ class CommentController extends Controller
         $comment->post_id = $post->id;
         $comment->user()->associate($request->user());
         $comment->save();
+
+        $post->user->notify(new NewComment($post));
 
 
         return back();

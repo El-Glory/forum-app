@@ -30,7 +30,7 @@
                     <span class="text-sm text-gray-600 ml-1">{{$post->likes->count()}}</span>
                 </form>
 
-                <a href="" class="ml-10"><i class="far fa-comment"></i></a>
+                <a href="{{route('posts.show', $post)}}" class="ml-10"><i class="far fa-comment"></i></a>
                 <span class="text-sm text-gray-600 ml-1">{{$post->comments->count()}}</span>
             </div>
 
