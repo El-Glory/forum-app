@@ -28,7 +28,7 @@
         </div>
 
         @foreach($post->comments as $comment)
-        <div class=" mb-4 p-4 bg-white shadow-lg rounded-lg">
+        <div class=" w-7/12 mb-4 p-4 bg-white shadow-lg rounded-lg">
             <div class="">
                 <div class="mb-1">
                     <p href="{{route('posts.show', $post)}}" class="font-medium ">{{$comment->name}}</p>
