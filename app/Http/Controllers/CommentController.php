@@ -10,7 +10,7 @@ use App\Notifications\NewComment;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, User $user, Post $post)
+    public function store(Request $request, Post $post)
     {
         //dd(auth()->user()->name);
         if (!auth()->user()) {
