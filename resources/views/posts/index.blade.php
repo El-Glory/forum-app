@@ -5,7 +5,7 @@
     <div class=" w-7/12 bg-gray p-4">
         <div class="flex justify-between p-3">
             <div>
-                <p class=" mt-1">
+                <p class="mt-1">
                 </p>
             </div>
             <div class="">

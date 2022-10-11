@@ -16,9 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::latest()->paginate();
         //Get all posts and return(view) the,
-        return view('posts.index', [
-            'posts' => $posts
-        ]);
+        return view('posts.index', compact('posts'));
     }
 
     public function postLike(Post $post, Request $request)

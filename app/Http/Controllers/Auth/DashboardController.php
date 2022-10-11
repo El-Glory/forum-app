@@ -19,8 +19,6 @@ class DashboardController extends Controller
         $posts = auth()->user()->posts;
 
         // $posts = Post::latest()->paginate();
-        return view('auth.dashboard', [
-            'posts' => $posts
-        ]);
+        return view('auth.dashboard', compact('posts'));
     }
 }
